@@ -1,38 +1,145 @@
-.App {
-  text-align: center;
+.app{
+  background-color: #f4f4f4;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  background-color: #fff;
+  padding: 15px; 
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo-container {
+  display: flex; 
+  align-items: center; 
+  padding-top: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+img {
+  width: 50px; 
+  height: auto; 
+  margin-right: -3px;
+  margin-top: -25px;
+}
+
+h1 {
+  font-size: 24px; 
+  font-weight: bold; 
+  margin: 0; 
+}
+
+h1 span{
+  color: #007bff;
+}
+
+.container {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  margin: 7% auto 0;
+  padding: 20px;
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap ;
+}
+
+.code-input textarea {
+  width: 45vw;
+  height: 96vh;
+  font-size: 1em;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: monospace;
+  white-space: pre;
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+.run-button {
+  position: absolute;
+  top: 15%;
+  right: 20px;
+  background-color: #014875; 
+  border: none;
+  color: #fff; 
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.play-icon {
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.output-display {
+  flex-basis: auto;
+  flex-grow: 1;
+  margin-top: 20px;
+  text-align: left;
+  max-height: fit-content;
+  font-family: Arial, sans-serif;
+}
+
+.heading{
+  display: flex;
+  flex-direction: row;
+}
+
+.result{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap ;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background-color: #f9f9f9;
+  overflow: scroll;
+}
+
+.error-header {
+  background-color: #f9f9f9;
+  padding: 10px;
+  color: gray;
+  border-bottom: 2px solid #8e8e8e;
+  flex-basis: 50%;
+}
+
+.output-label {
+  border-bottom: 2px solid #0071b8;
+  font-weight: bold;
+  color: #007bff;
+  width: 50%;
+}
+
+.output-content {
+  margin-top: 5px;
+  color: #333;
+}
+
+.output-display .stdout,
+.output-display .stderr,
+.output-display .error {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.output-display .stdout {
+  background-color: #ffffff;
+}
+
+.output-display .stderr {
+  background-color: #ffe6e6;
+}
+
+.output-display .error {
+  background-color: #ffdddd;
 }

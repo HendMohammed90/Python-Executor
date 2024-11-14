@@ -1,0 +1,3 @@
+Here are notes with the missed points:
+- side menu.
+- loading part for result.

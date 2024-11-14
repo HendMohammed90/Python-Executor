@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Python Executor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Python code execution API built with Node.js and Express, designed to be used with a front-end application built in React. It allows users to send Python code snippets to the server, where they will be executed in a sandboxed environment, and the output (or errors) will be returned to the client. This project includes a simple server setup to handle cross-origin requests (CORS) and manage persistent sessions for running code interactively.
 
-## Available Scripts
+## Features
+- Code Execution: Execute Python code from client requests and return ```stdout``` or ```stderr``` based on the result.
+- Session Management: Uses unique session IDs to allow clients to execute additional code in the same context.
+- Timeout Handling: Limits execution time to prevent the server from hanging due to long-running code.
+- CORS Support: Configured with CORS to allow cross-origin requests, making it easier to integrate with front-end applications.
 
-In the project directory, you can run:
+### Prerequisites
+- Node.js and npm installed on your machine.
+### Project Structure
+src/
+├── components/
+│   ├── CodeInput.js
+│   ├── OutputDisplay.js
+│   ├── Header.js
+├── services/
+│   ├── api.js
+├── App.js
+├── App.css
+├── server.js
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- ```server.js``` - Main server file where the Express server and the ```/execute``` API endpoint are defined.
+- ```App.js``` - Main Component folder.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup Instructions
+1. Install Dependencies:
+Clone the project and navigate into the project directory. Then install the dependencies:
 
-### `npm run build`
+```bash
+npm install
+```
+2. Run the App:
+```bash
+npm run start
+```
+3. Run the server:
+```bash
+node server.js
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Handling CORS Errors in the server
+When attempting to send requests from a front-end application to this server, you may encounter a CORS (Cross-Origin Resource Sharing) error if the front-end runs on a different origin. To handle this, the server includes the CORS middleware, allowing cross-origin requests.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```javascript
+const cors = require('cors');
+app.use(cors());
+```
+This line enables CORS, which allows the server to accept requests from different origins, making it easier to connect to front-end applications running on different ports or domains.
 
-### `npm run eject`
+### Notes: 
+- Security: This setup is designed for local or controlled environments, as executing arbitrary code presents security risks. For production use, additional sandboxing and security measures should be implemented.
+- Error Handling: The server captures syntax and runtime errors in Python, which are sent back to the client through ```stderr```.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
